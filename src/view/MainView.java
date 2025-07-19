@@ -3,11 +3,11 @@ package view;
 import java.util.Scanner;
 
 public class MainView {
-    public static void mainView(){
+    public static void showMainView(){
         Scanner input = new Scanner(System.in);
 
         boolean exit =false;
-        while(exit==false){
+        while(!exit){
             System.out.println("Enter 1 to SignUp");
             System.out.println("Enter 2 to LogIN");
             System.out.println("Enter 3 to Exit\n");
@@ -16,10 +16,10 @@ public class MainView {
 
                 switch (userChoice){
                     case 1:
-                        //call signUp view
+                        SignUpView.showSignUpView();
                         break;
                     case 2:
-                        //call login view
+                        LoginView.showLoginView();
                         break;
                     case 3:
                         System.out.println("Thank you for using the program\n");
