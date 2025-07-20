@@ -3,6 +3,7 @@ package model;
 public class User {
     private String name, username, password;
     private Boolean isAdmin;
+    private int userId;
 
     public User(String name, String username, String password){
         this.name =name;
@@ -46,5 +47,13 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
