@@ -29,7 +29,7 @@ public class MainView {
                         System.out.println("Please enter the valid option only\n");
                 }
 
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Please enter the valid option only\n");
             }
         }
