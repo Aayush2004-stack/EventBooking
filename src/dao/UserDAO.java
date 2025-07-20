@@ -4,6 +4,7 @@ import model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
@@ -30,5 +31,36 @@ public class UserDAO {
         return userInserted;
 
 
+    }
+
+    public User  logIN(User user) {
+
+        try {
+            conn=DataBaseConnection.connection();
+            if(conn!=null){
+                String query="Select * FROM user where username = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, user.getUsername());
+                ResultSet resultSet =ps.executeQuery();
+                if(resultSet.next()){
+                    String username= resultSet.getString("username");
+                    String password= resultSet.getString("password");
+                    String name= resultSet.getString("name");
+                    Boolean isAdmin=resultSet.getBoolean("isAdmin");
+                    if(password.equals(user.getPassword())){
+                        user.setName(name);
+                        user.setUsername(username);
+                        user.setPassword(password);
+                        user.setAdmin(isAdmin);
+                        return user;
+                    }
+
+                }
+
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 }
