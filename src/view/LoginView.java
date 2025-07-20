@@ -8,13 +8,22 @@ public class LoginView {
     public static void showLoginView(){
         UserController controller=new UserController();
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your username: ");
-        String username= input.nextLine();
-        System.out.println("Enter your password: ");
-        String password= input.nextLine();
+
+        while(true){ //to reprompt the username and password if login fails
+            System.out.println("Enter your username: ");
+            String username= input.nextLine();
+            System.out.println("Enter your password: ");
+            String password= input.nextLine();
+
+            if(controller.logIn(username,password)){
+                System.out.println("Login successful");
+                break;
+            }
+            else {
+                System.out.println("Incorrect password");
+            }
+        }
 
 
-
-        //TODO pass the username and password to match the credentials
     }
 }
