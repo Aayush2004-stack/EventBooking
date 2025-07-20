@@ -13,7 +13,7 @@ public class UserController {
 
     }
 
-    public boolean logIn(String username, String password) {
+    public User logIn(String username, String password) {
         User user =new User(username, password);
         return userDAO.logIN(user);
     }

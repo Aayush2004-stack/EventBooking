@@ -33,8 +33,8 @@ public class UserDAO {
 
     }
 
-    public boolean logIN(User user) {
-        boolean logIn=false;
+    public User  logIN(User user) {
+
         try {
             conn=DataBaseConnection.connection();
             if(conn!=null){
@@ -52,14 +52,15 @@ public class UserDAO {
                         user.setUsername(username);
                         user.setPassword(password);
                         user.setAdmin(isAdmin);
-                        logIn=true;
+                        return user;
                     }
+
                 }
 
             }
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
-        return logIn;
+        return null;
     }
 }
