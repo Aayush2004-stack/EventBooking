@@ -43,6 +43,7 @@ public class UserDAO {
                 ps.setString(1, user.getUsername());
                 ResultSet resultSet =ps.executeQuery();
                 if(resultSet.next()){
+                    int userId=resultSet.getInt("userId");
                     String username= resultSet.getString("username");
                     String password= resultSet.getString("password");
                     String name= resultSet.getString("name");
@@ -52,6 +53,7 @@ public class UserDAO {
                         user.setUsername(username);
                         user.setPassword(password);
                         user.setAdmin(isAdmin);
+                        user.setUserId(userId);
                         return user;
                     }
 
