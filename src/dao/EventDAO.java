@@ -32,7 +32,47 @@ public class EventDAO {
         }
         return false;
     }
-    public ArrayList<Event> getApprovedEvent(){
+    public boolean approveEvent(Event event){
+        try {
+            conn =DataBaseConnection.connection();
+            if(conn!=null){
+                String query="UPDATE events SET isApproved = 1 WHERE eventId = ?";
+                PreparedStatement ps =conn.prepareStatement(query);
+                ps.setInt(1, event.getEventId());
+
+
+                int row =ps.executeUpdate();
+                if(row>0){
+                    return true;
+                }
+            }
+        } catch (ClassNotFoundException |SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+
+    }
+    public boolean rejectEvent(Event event){
+        try {
+            conn =DataBaseConnection.connection();
+            if(conn!=null){
+                String query="UPDATE events SET isApproved = 0 WHERE eventId = ?";
+                PreparedStatement ps =conn.prepareStatement(query);
+                ps.setInt(1, event.getEventId());
+
+
+                int row =ps.executeUpdate();
+                if(row>0){
+                    return true;
+                }
+            }
+        } catch (ClassNotFoundException |SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+
+    }
+    public ArrayList<Event> getEvent(){
         ArrayList<Event>events=new ArrayList<>();
         try {
             conn =DataBaseConnection.connection();
@@ -46,7 +86,9 @@ public class EventDAO {
                     String title= resultSet.getString("title");
                     int availableTickets = resultSet.getInt("availableTickets");
                     double price =resultSet.getDouble("price");
-                    Boolean isApproved=resultSet.getBoolean("isApproved");
+
+                    //getBoolean doesn't return wrapper class. only 1 or 0 so used getObject to hold null value too
+                    Boolean isApproved=resultSet.getObject("isApproved", Boolean.class);
                     Event event =new Event(eventId,title,price,availableTickets,isApproved);
 
                     events.add(event);

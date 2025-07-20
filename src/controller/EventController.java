@@ -13,9 +13,15 @@ public class EventController {
         Event event =new Event(eventTitle,price,availableTickets,userId);
         return eventDAO.addEvent(event);
     }
+    public boolean approveEvent(Event event){
+        return eventDAO.approveEvent(event);
+    }
+    public boolean rejectEvent(Event event){
+        return eventDAO.rejectEvent(event);
+    }
 
     public ArrayList<Event> getApprovedEvent() {
-        ArrayList<Event>events=eventDAO.getApprovedEvent();
+        ArrayList<Event>events=eventDAO.getEvent();
         ArrayList<Event> toRemove = new ArrayList<>();
         if(events!=null){
             for (Event event: events){
@@ -30,4 +36,21 @@ public class EventController {
         }
         return events;
     }
+    public ArrayList<Event> getToApproveEvent() {
+        ArrayList<Event> eventsToApprove =eventDAO.getEvent();
+        ArrayList<Event> toRemove = new ArrayList<>();
+        if(eventsToApprove !=null){
+            for (Event event: eventsToApprove){
+                Boolean isApproved=event.getIsApproved();
+                if(isApproved!=null){
+                    toRemove.add(event);
+                }
+            }
+            eventsToApprove.removeAll(toRemove);
+
+
+        }
+        return eventsToApprove;
+    }
+
 }
