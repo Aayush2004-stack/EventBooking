@@ -20,6 +20,10 @@ public class EventController {
         return eventDAO.rejectEvent(event);
     }
 
+    public ArrayList<Event> getAllEvent(){
+        return eventDAO.getEvent();
+    }
+
     public ArrayList<Event> getApprovedEvent() {
         ArrayList<Event>events=eventDAO.getEvent();
         ArrayList<Event> toRemove = new ArrayList<>();
@@ -47,8 +51,6 @@ public class EventController {
                 }
             }
             eventsToApprove.removeAll(toRemove);
-
-
         }
         return eventsToApprove;
     }

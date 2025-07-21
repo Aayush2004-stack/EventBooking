@@ -12,7 +12,9 @@ public class UserView {
         while(logged){
             System.out.println("Enter 1 to create an Event");
             System.out.println("Enter 2 to register to an Event");
-            System.out.println("Enter 3 to logout");
+            System.out.println("Enter 3 to see my Events");
+            System.out.println("Enter 4 to see my tickets");
+            System.out.println("Enter 5 to logout");
             try {
                 int userChoice=Integer.parseInt(input.nextLine());
                 switch (userChoice){
@@ -23,6 +25,11 @@ public class UserView {
                         EventView.registerEventView();
                         break;
                     case 3:
+                        EventView.userEventView(user);
+                        break;
+                    case 4:
+                        break;
+                    case 5:
                         System.out.println("Logging out");
                         logged=false;
                         break;

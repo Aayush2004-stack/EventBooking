@@ -15,12 +15,13 @@ public class Event {
         this.issuedUserID = issuedUserID;
     }
 
-    public Event(int eventId, String title, double price, int availableTickets, Boolean isApproved ) {
+    public Event(int eventId, String title, double price, int availableTickets, Boolean isApproved, int issuedUserID ) {
         this.title = title;
         this.price = price;
         this.availableTickets = availableTickets;
         this.eventId=eventId;
         this.isApproved=isApproved;
+        this.issuedUserID=issuedUserID;
     }
 
     public Boolean getIsApproved() {

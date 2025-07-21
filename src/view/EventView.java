@@ -2,8 +2,10 @@ package view;
 
 
 import controller.EventController;
+import model.Event;
 import model.User;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EventView {
@@ -53,5 +55,31 @@ public class EventView {
         System.out.println("Register to an Event\n");
         System.out.println("Applicable events: ");
 
+    }
+    public static void userEventView(User user){
+        ArrayList<Event> eventList =eventController.getAllEvent();
+        int i=1;
+        String remark;
+        for (Event event: eventList){
+            if(event.getIssuedUserID()==user.getUserId()){
+
+                if(event.getIsApproved()==null){
+                    remark="In Review";
+                }
+                else if(event.getIsApproved()){
+                    remark="Approved";
+                } else {
+                    remark="Rejected";
+                }
+
+                System.out.println("S.N: "+i);
+                System.out.println("Event Title :"+event.getTitle());
+                System.out.println("Ticket Price: "+event.getPrice());
+                System.out.println("Available Tickets: "+event.getAvailableTickets());
+                System.out.println("Remarks: "+ remark);
+                System.out.println("---------------------------------\n");
+                i++;
+            }
+        }
     }
 }
