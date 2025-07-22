@@ -86,10 +86,11 @@ public class EventDAO {
                     String title= resultSet.getString("title");
                     int availableTickets = resultSet.getInt("availableTickets");
                     double price =resultSet.getDouble("price");
+                    int issuedUserId=resultSet.getInt("issuedUserId");
 
                     //getBoolean doesn't return wrapper class. only 1 or 0 so used getObject to hold null value too
                     Boolean isApproved=resultSet.getObject("isApproved", Boolean.class);
-                    Event event =new Event(eventId,title,price,availableTickets,isApproved);
+                    Event event =new Event(eventId,title,price,availableTickets,isApproved,issuedUserId);
 
                     events.add(event);
                 }
