@@ -28,6 +28,7 @@ public class UserView {
                         EventView.userEventView(user);
                         break;
                     case 4:
+                        TicketView.userTicketView(user);
                         break;
                     case 5:
                         System.out.println("Logging out");
