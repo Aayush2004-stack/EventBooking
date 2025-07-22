@@ -54,6 +54,17 @@ public class EventView {
     public static void registerEventView() {
         System.out.println("Register to an Event\n");
         System.out.println("Applicable events: ");
+        int i=1;
+        for(Event event: eventController.getApprovedEvent()){
+            System.out.println("S.N: " +i);
+            System.out.println("Event Id: "+event.getEventId());
+            System.out.println("Event Title: "+event.getTitle());
+            System.out.println("Ticket Price: "+event.getPrice());
+            System.out.println("Available Tickets: "+event.getAvailableTickets());
+            System.out.println("---------------------------------\n");
+            i++;
+        }
+        System.out.println("Enter the Id of the event you want to register to:");
 
     }
     public static void userEventView(User user){
