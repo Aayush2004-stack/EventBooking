@@ -64,7 +64,28 @@ public class EventView {
             System.out.println("---------------------------------\n");
             i++;
         }
-        System.out.println("Enter the Id of the event you want to register to:");
+        try {
+            System.out.println("Enter the Id of the event you want to register to:");
+            int userChoice =Integer.parseInt(input.nextLine());
+            boolean eventIdMatch=false;
+            for(Event event: eventController.getApprovedEvent()){
+                if(userChoice== event.getEventId()){
+                    //TODO call here to buy the ticket
+                    eventIdMatch=true;
+                    break;
+                }
+
+            }
+            if(!eventIdMatch){
+                System.out.println("Please enter a valid id of the event");
+            }
+
+        }
+        catch (NumberFormatException e){
+            System.out.println("Please enter a valid id of the event");
+        }
+
+
 
     }
     public static void userEventView(User user){
