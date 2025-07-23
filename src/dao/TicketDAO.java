@@ -11,6 +11,26 @@ import java.util.ArrayList;
 
 public class TicketDAO {
     private Connection conn =null;
+    public boolean insertTicket(int eventId, int userId){
+        boolean inserted=false;
+        try {
+            conn=DataBaseConnection.connection();
+            if(conn!=null){
+                String query="INSERT INTO tickets (userId, EventId) VALUES (?, ?)";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1,userId);
+                ps.setInt(2,eventId);
+                if(ps.executeUpdate()>0){
+                    inserted=true;
+                }
+
+            }
+        } catch (ClassNotFoundException |SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return inserted;
+
+    }
     public ArrayList<Ticket> getUserTickets(User user) {
         ArrayList<Ticket>tickets=new ArrayList<>();
         try {
@@ -36,4 +56,5 @@ public class TicketDAO {
         return tickets;
 
     }
+
 }

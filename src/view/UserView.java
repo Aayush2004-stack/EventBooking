@@ -22,7 +22,7 @@ public class UserView {
                         EventView.createEventView(user);
                         break;
                     case 2:
-                        EventView.registerEventView();
+                        EventView.registerEventView(user);
                         break;
                     case 3:
                         EventView.userEventView(user);

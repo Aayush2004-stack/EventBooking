@@ -30,9 +30,10 @@ public class EventController {
         if(events!=null){
             for (Event event: events){
                 Boolean isApproved=event.getIsApproved();
-                if(!isApproved){
+                if(isApproved==null | Boolean.TRUE.equals(isApproved)){
                     toRemove.add(event);
                 }
+
             }
             events.removeAll(toRemove);
 

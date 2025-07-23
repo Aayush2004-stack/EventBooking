@@ -2,11 +2,12 @@ package model;
 
 public class Ticket {
     int ticketNo;
-    int eventNo;
+    int eventId;
+    int userId;
 
     public Ticket(int ticketNo, int eventId) {
         this.ticketNo = ticketNo;
-        this.eventNo = eventId;
+        this.eventId = eventId;
     }
 
     public int getTicketNo() {
@@ -18,10 +19,10 @@ public class Ticket {
     }
 
     public int getEventId() {
-        return eventNo;
+        return eventId;
     }
 
     public void setEventId(int eventId) {
-        this.eventNo = eventId;
+        this.eventId = eventId;
     }
 }

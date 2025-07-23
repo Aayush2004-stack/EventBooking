@@ -2,6 +2,7 @@ package view;
 
 
 import controller.EventController;
+import controller.TicketController;
 import model.Event;
 import model.User;
 
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class EventView {
     static Scanner input =new Scanner(System.in);
     static EventController eventController =new EventController();
+
 
     public static void createEventView(User user) {
 
@@ -51,7 +53,8 @@ public class EventView {
 
     }
 
-    public static void registerEventView() {
+    public static void registerEventView(User user) {
+        TicketController ticketController =new TicketController();
         System.out.println("Register to an Event\n");
         System.out.println("Applicable events: ");
         int i=1;
@@ -70,7 +73,9 @@ public class EventView {
             boolean eventIdMatch=false;
             for(Event event: eventController.getApprovedEvent()){
                 if(userChoice== event.getEventId()){
-                    //TODO call here to buy the ticket
+                    if(ticketController.butTicket(event.getEventId(),user.getUserId())){
+                        System.out.println("Ticket bought successfully");
+                    }
                     eventIdMatch=true;
                     break;
                 }
