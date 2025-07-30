@@ -67,28 +67,34 @@ public class EventView {
             System.out.println("---------------------------------\n");
             i++;
         }
-        try {
-            System.out.println("Enter the Id of the event you want to register to:");
-            int userChoice =Integer.parseInt(input.nextLine());
-            boolean eventIdMatch=false;
-            for(Event event: eventController.getApprovedEvent()){
-                if(userChoice== event.getEventId()){
-                    if(ticketController.butTicket(event.getEventId(),user.getUserId())){
-                        System.out.println("Ticket bought successfully");
+        boolean error=false;
+        while(!error){
+            try {
+                System.out.println("Enter the Id of the event you want to register to:");
+                int userChoice =Integer.parseInt(input.nextLine());
+                boolean eventIdMatch=false;
+                for(Event event: eventController.getApprovedEvent()){
+                    if(userChoice== event.getEventId()){
+                        if(ticketController.butTicket(event.getEventId(),user.getUserId())){
+                            System.out.println("Ticket bought successfully\n");
+                        }
+                        eventIdMatch=true;
+                        error=true;
+                        break;
                     }
-                    eventIdMatch=true;
-                    break;
+
+                }
+                if(!eventIdMatch){
+                    System.out.println("Please enter a valid id of the event\n");
                 }
 
             }
-            if(!eventIdMatch){
-                System.out.println("Please enter a valid id of the event");
+            catch (NumberFormatException e){
+                System.out.println("Please enter a valid id of the event\n");
             }
 
         }
-        catch (NumberFormatException e){
-            System.out.println("Please enter a valid id of the event");
-        }
+
 
 
 
