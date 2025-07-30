@@ -17,6 +17,7 @@ public class TicketView {
             System.out.println("S.N: "+ i);
             System.out.println("Ticket No: "+ticket.getTicketNo());
             System.out.println("Event Id: "+ticket.getEventId());
+            System.out.println("---------------------------------\n");
             i++;
         }
 
