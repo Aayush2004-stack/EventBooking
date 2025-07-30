@@ -54,19 +54,19 @@ public class AdminView {
                                     int adminChoice=Integer.parseInt(input.nextLine());
                                     if(adminChoice==1){
                                         if(eventController.approveEvent(event)){
-                                            System.out.println("Event Approved");
+                                            System.out.println("Event Approved\n");
                                         }
                                         else {
-                                            System.out.println("Error approving");
+                                            System.out.println("Error approving\n");
                                         }
                                         break;
                                     }
                                     else if(adminChoice==2){
                                         if(eventController.rejectEvent(event)){
-                                            System.out.println("Event Rejected");
+                                            System.out.println("Event Rejected\n");
                                         }
                                         else {
-                                            System.out.println("Error Rejecting");
+                                            System.out.println("Error Rejecting\n");
                                         }
                                         break;
                                     }
@@ -89,11 +89,11 @@ public class AdminView {
                         break;
 
                     default:
-                        System.out.println("Please enter a valid choice");
+                        System.out.println("Please enter a valid choice\n");
                 }
             }
             catch (NumberFormatException e){
-                System.out.println("Please enter the valid choice");
+                System.out.println("Please enter the valid choice\n");
             }
 
         }
