@@ -31,15 +31,15 @@ public class UserView {
                         TicketView.userTicketView(user);
                         break;
                     case 5:
-                        System.out.println("Logging out");
+                        System.out.println("Logging out\n");
                         logged=false;
                         break;
                     default:
-                        System.out.println("Please enter a valid choice");
+                        System.out.println("Please enter a valid choice\n");
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid choice");
+                System.out.println("Please enter a valid choice\n");
             }
         }
 
